@@ -1,0 +1,15 @@
+body{
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.body-content{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sidebar-nv{
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}

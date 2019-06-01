@@ -1,0 +1,64 @@
+{% extends "BeaconManager/base_generic.html" %}
+
+{% block title %}
+    <meta http-equiv="refresh" content="10" />
+{% endblock %}
+
+{% block content %}
+
+<h2>{{title}}</h2>
+
+<h3 class="p-3 mb-2 bg-primary text-white">Known Tags</h3>
+<p>Detail of nearby Tags and their details:</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tag's Name</th>
+                <th scope="col">Tag's Description</th>
+                <th scope="col">Tag's Status</th>
+                <th scope="col">Tag's Unique ID</th>
+                <th scope="col">Tag's Distance</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for key, val in tagsK.items %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ val.0 }}</td>
+                <td>{{ val.1 }}</td>
+                <td>{{ val.2 }}</td>
+                <td>{{ key}}</td>
+                <td>{{ val.3 }} meter</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h3 class="p-3 mb-2 bg-warning text-dark">Unknown Tags</h3>
+<p>Detail of nearby unknown BLE Tags:</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tag's Unique ID</th>
+                <th scope="col">Tag's RSSI</th>
+                <th scope="col">Tag's Distance</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for key, val in tagsU.items %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ key }}</td>
+                <td>{{ val.0 }} dB</td>
+                <td>{{ val.1 }} meter</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -30,6 +30,24 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BeaconManager\admin.py" />
+    <Compile Include="BeaconManager\apps.py" />
+    <Compile Include="BeaconManager\filter.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BeaconManager\migrations\0001_initial.py" />
+    <Compile Include="BeaconManager\migrations\0002_auto_20190522_2352.py" />
+    <Compile Include="BeaconManager\migrations\__init__.py" />
+    <Compile Include="BeaconManager\models.py" />
+    <Compile Include="BeaconManager\mqtt.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BeaconManager\tests.py" />
+    <Compile Include="BeaconManager\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BeaconManager\views.py" />
+    <Compile Include="BeaconManager\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="PackageTracker\__init__.py" />
     <Compile Include="PackageTracker\settings.py" />
@@ -37,9 +55,114 @@
     <Compile Include="PackageTracker\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BeaconManager\static\BeaconManager\content\site.css" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\.editorconfig" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\.gitignore" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\.npmrc" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\.travis.yml" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\.zuul.yml" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\benchmarks\bombing.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\benchmarks\throughputCounter.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\bin\pub.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\bin\sub.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\CONTRIBUTING.md" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\doc\help.txt" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\doc\publish.txt" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\doc\subscribe.txt" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\example.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\client\secure-client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\client\simple-both.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\client\simple-publish.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\client\simple-subscribe.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\tls client\crt.ca.cg.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\tls client\mqttclient.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\tls client\tls-cert.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\tls client\tls-key.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\wss\client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\wss\client_with_proxy.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\ali.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\index.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\tcp.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\tls.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\ws.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\wx.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\store.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\validations.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\LICENSE.md" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\mqtt.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\MQTT.js.png" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\package.json" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\README.md" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\abstract_client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\abstract_store.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\browser\server.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\browser\test.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\private-csr.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\private-key.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\public-cert.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\public-key.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\server.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\server_process.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\tls-cert.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\tls-csr.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\tls-key.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\wrong-cert.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\wrong-csr.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\wrong-key.pem" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\mocha.opts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\mqtt.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\mqtt_store.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\secure_client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\server.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\store.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\typescript\broker-connect-subscribe-and-publish.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\typescript\tsconfig.json" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\util.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\websocket_client.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\tslint.json" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\index.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\client-options.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\client.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\connect\index.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\store-options.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\store.d.ts" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\myScript.js" />
+    <Content Include="BeaconManager\static\BeaconManager\scripts\temp.js" />
+    <Content Include="BeaconManager\templates\BeaconManager\about.html" />
+    <Content Include="BeaconManager\templates\BeaconManager\base_generic.html" />
+    <Content Include="BeaconManager\templates\BeaconManager\tags_data.html" />
+    <Content Include="BeaconManager\templates\BeaconManager\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BeaconManager\" />
+    <Folder Include="BeaconManager\migrations\" />
+    <Folder Include="BeaconManager\static\" />
+    <Folder Include="BeaconManager\static\BeaconManager\" />
+    <Folder Include="BeaconManager\static\BeaconManager\content\" />
+    <Folder Include="BeaconManager\static\BeaconManager\fonts\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\benchmarks\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\bin\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\doc\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\client\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\tls client\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\examples\wss\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\lib\connect\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\browser\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\helpers\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\test\typescript\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\" />
+    <Folder Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\connect\" />
+    <Folder Include="BeaconManager\templates\" />
+    <Folder Include="BeaconManager\templates\BeaconManager\" />
     <Folder Include="PackageTracker\" />
   </ItemGroup>
   <ItemGroup>

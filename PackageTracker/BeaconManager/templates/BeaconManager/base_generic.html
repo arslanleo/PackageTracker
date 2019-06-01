@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}
+    <title>{{ title }} - Package Tracker WebApp</title>
+    {% endblock %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'BeaconManager/content/site.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'BeaconManager/scripts/myScript.js' %}"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+             {% block sidebar %}
+                <!-- insert default navigation text for every page -->
+                <ul class="sidebar-nav">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'tagData' %}">Tag's Data</a></li>
+                </ul> 
+             {% endblock %}
+            </div>
+            <div class="col-sm-10">
+                {% block content %}<!-- default content text -->{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; {{ year }} - Arslan Designs</p>
+    </footer>
+    
+
+</body>
+
+</html>
