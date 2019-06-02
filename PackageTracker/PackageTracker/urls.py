@@ -24,7 +24,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='adminpanel'),
     path('BeaconManager/',include('BeaconManager.urls')),
     path('', RedirectView.as_view(url='/BeaconManager/')),
 ] 

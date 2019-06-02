@@ -14,6 +14,7 @@ def index(request):     #its a function based view
         'index.html',
         context={
             'title':'Home',
+            'classID':'1',
             'year':datetime.now().year,
             }
         )
@@ -36,6 +37,7 @@ def viewTagsData(request):     #its a function based view
         'tags_data.html',
         context={
             'title':"Tag's Data",
+            'classID':'2',
             'year':datetime.now().year,
             'tagsU':unknownTags,
             'tagsK':tempKnown,
@@ -50,6 +52,7 @@ def about(request):
         'about.html',
         context={
             'title':'About',
+            'classID':'3',
             'year':datetime.now().year,
             }
         )

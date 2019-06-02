@@ -1,44 +1,66 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block title %}
-    <title>{{ title }} - Package Tracker WebApp</title>
-    {% endblock %}
-    {% load staticfiles %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'BeaconManager/content/site.css' %}" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{% static 'BeaconManager/scripts/myScript.js' %}"></script>
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block title %}
+        <title>{{ title }} - Package Tracker WebApp</title>
+        {% endblock %}
+        {% load staticfiles %}
+        <!-- Bootstrap -->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'BeaconManager/content/site.css' %}" />
+    </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2">
-             {% block sidebar %}
-                <!-- insert default navigation text for every page -->
-                <ul class="sidebar-nav">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'tagData' %}">Tag's Data</a></li>
-                </ul> 
-             {% endblock %}
+    <body>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="{% url 'index' %}">Package Tracker</a>
             </div>
-            <div class="col-sm-10">
-                {% block content %}<!-- default content text -->{% endblock %}
-            </div>
-        </div>
-    </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="{% if classID == "1" %} active {% endif %}"><a href="{% url 'index' %}">Home</a></li>
+                <li class="{% if classID == "2" %} active {% endif %}"><a href="{% url 'tagData' %}">Tag's Data</a></li>
+                <li class="{% if classID == "3" %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'admin:index' %}">Admin Panel</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
 
-    <footer>
-        <p>&copy; {{ year }} - Arslan Designs</p>
-    </footer>
-    
+        <div class="container">
 
-</body>
+          <!-- Main component for a primary marketing message or call to action -->
+          <div class="jumbotron">
+            {% block content %}<!-- default content text -->{% endblock %}
+          </div>
 
+        </div> <!-- /container -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{% static 'BeaconManager/scripts/myScript.js' %}"></script>
+
+        <footer class="fixed-footer">
+            <p>&copy; {{ year }} - Arslan Designs</p>
+        </footer>
+    </body>
 </html>

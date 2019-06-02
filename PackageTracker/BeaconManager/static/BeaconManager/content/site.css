@@ -1,15 +1,31 @@
-body{
-    padding-top: 50px;
-    padding-bottom: 20px;
+body {
+    min-height: 2000px;
+    padding-top: 70px;
 }
 
-.body-content{
-    padding-left: 15px;
-    padding-right: 15px;
+.fixed-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sidebar-nv{
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
+/* body container */
+.jumbotron {
+    background-color: transparent;
+}
+
+/* navigation bar */
+.navbar-default {
+    background-color: turquoise;
+    border-color: #e7e7e7;
+}
+
+/* home button in navigation bar */
+.navbar-default .navbar-brand {
+    color: purple;
+}
+
+/* other buttons in navigation bar */
+.navbar-default .navbar-nav > li > a {
+    color: #000000;
 }
