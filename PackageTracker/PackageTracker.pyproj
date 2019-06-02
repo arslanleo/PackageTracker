@@ -129,11 +129,11 @@
     <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\store-options.d.ts" />
     <Content Include="BeaconManager\static\BeaconManager\scripts\MQTT\types\lib\store.d.ts" />
     <Content Include="BeaconManager\static\BeaconManager\scripts\myScript.js" />
-    <Content Include="BeaconManager\static\BeaconManager\scripts\temp.js" />
     <Content Include="BeaconManager\templates\BeaconManager\about.html" />
     <Content Include="BeaconManager\templates\BeaconManager\base_generic.html" />
     <Content Include="BeaconManager\templates\BeaconManager\tags_data.html" />
     <Content Include="BeaconManager\templates\BeaconManager\index.html" />
+    <Content Include="db.sqlite3" />
     <Content Include="requirements.txt" />
     <Content Include="runserver.bat" />
   </ItemGroup>
