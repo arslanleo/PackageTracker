@@ -135,6 +135,7 @@
     <Content Include="BeaconManager\templates\BeaconManager\tags_data.html" />
     <Content Include="BeaconManager\templates\BeaconManager\index.html" />
     <Content Include="requirements.txt" />
+    <Content Include="runserver.bat" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BeaconManager\" />
