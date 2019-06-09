@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from datetime import datetime
 from BeaconManager.mqtt import getTagsInfo
 from BeaconManager.models import Tag
@@ -52,7 +53,36 @@ def about(request):
         'about.html',
         context={
             'title':'About',
+            'classID':'4',
+            'year':datetime.now().year,
+            }
+        )
+
+def getLocData(request):
+    unknownTags = getTagsInfo()
+    knownTags = Tag.objects.all()
+    tempKnown = []
+    for t in knownTags:
+        if(t.tagID in unknownTags):
+            tempKnown.append({"name":t.name,"location":unknownTags[t.tagID][1]})
+            unknownTags.pop(t.tagID)
+
+    json_data = {
+        "tags": tempKnown,
+        "nodes" : tempKnown
+        }
+    return JsonResponse(json_data, safe=False)
+
+def viewliveLoc(request):
+    """View function for Live Location page"""
+
+    return render(
+        request,
+        'live_location.html',
+        context={
+            'title':'Live Location of Tags',
             'classID':'3',
             'year':datetime.now().year,
             }
         )
+

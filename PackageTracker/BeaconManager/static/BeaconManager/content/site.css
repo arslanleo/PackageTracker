@@ -29,3 +29,13 @@ body {
 .navbar-default .navbar-nav > li > a {
     color: #000000;
 }
+
+#canvas-container {
+    width: 100%;
+    text-align: center;
+}
+
+#locCanvas {
+    border: 1px solid #000000;
+    display: inline;
+}

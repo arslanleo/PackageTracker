@@ -1,0 +1,62 @@
+﻿{% extends "BeaconManager/base_generic.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<h2>{{title}}</h2>
+
+<div id="canvas-container">
+    <canvas id="locCanvas" width="640" height="360">
+
+    </canvas>
+</div>
+
+<div class"container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div id="nodesdata" class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Node Name</th>
+                            <th scope="col">Node Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>test1</td>
+                            <td>loc1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div id="tagsdata" class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tag Name</th>
+                            <th scope="col">Tag Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script type="text/javascript">
+    IMG_LOC_NODE = "{% static 'BeaconManager/images/node.png'%}"
+    IMG_LOC_TAG = "{% static 'BeaconManager/images/tag.png'%}"
+</script>
+<script type="text/javascript" src="{% static 'BeaconManager/scripts/locScripts.js' %}"></script>
+{% endblock %}

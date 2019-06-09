@@ -35,7 +35,8 @@
               <ul class="nav navbar-nav">
                 <li class="{% if classID == "1" %} active {% endif %}"><a href="{% url 'index' %}">Home</a></li>
                 <li class="{% if classID == "2" %} active {% endif %}"><a href="{% url 'tagData' %}">Tag's Data</a></li>
-                <li class="{% if classID == "3" %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
+                <li class="{% if classID == "3" %} active {% endif %}"><a href="{% url 'liveLoc' %}">Live Location</a></li>
+                <li class="{% if classID == "4" %} active {% endif %}"><a href="{% url 'about' %}">About</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'admin:index' %}">Admin Panel</a></li>
@@ -58,6 +59,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="{% static 'BeaconManager/scripts/myScript.js' %}"></script>
+        {% block pageScripts %}<!-- page specific scripts here -->{% endblock %}
 
         <footer class="fixed-footer">
             <p>&copy; {{ year }} - Arslan Designs</p>
