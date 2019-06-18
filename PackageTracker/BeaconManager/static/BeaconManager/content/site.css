@@ -39,3 +39,27 @@ body {
     border: 1px solid #000000;
     display: inline;
 }
+
+#layout-details {
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#layout-details > p {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin:0px;
+}
+
+#tagsdataTable, #nodesdataTable {
+    font-size: 12px;
+}
+
+#tagsdataTable > tbody > tr > td, #tagsdataTable > tbody > tr > th {
+    padding: 3px;
+}
+
+#nodesdataTable > tbody > tr > td, #nodesdataTable > tbody > tr > th {
+    padding: 3px;
+}

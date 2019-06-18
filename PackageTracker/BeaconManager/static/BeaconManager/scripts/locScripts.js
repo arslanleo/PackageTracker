@@ -11,12 +11,23 @@ var nodeimg = new Image();
 var tagimg = new Image();
 var canvasWidth = 640;
 var canvasHeight = 360;
+var mapScale = 0;
 var TAGS;
-var NODES;
+var NODES_TABLE;
+
+$(document).ready(function () {
+    setInterval(getLocData, 10000);     //recall after every 10 seconds
+    init();
+});
 
 function init() {
     nodeimg.src = IMG_LOC_NODE;
     tagimg.src = IMG_LOC_TAG;
+    document.getElementById("locCanvas").style.background = "url('" + IMG_LOC_LAYOUT + "')";
+
+    NODES_TABLE = document.getElementById("nodesdataTable").getElementsByTagName('td');
+    //console.log(NODES_TABLE);
+    
     window.requestAnimationFrame(draw);
 }
 
@@ -33,19 +44,51 @@ function draw() {
     ctx.textAlign = 'center';
     ctx.save();
     //ctx.translate(150, 150);
-
-    for (var i in TAGS) {
-        ctx.drawImage(tagimg, Math.round(TAGS[i].location), 30);
-        ctx.fillText(TAGS[i].name, Math.round(TAGS[i].location), 30);
+    //print nodes on map
+    for (var n = 1; n < NODES_TABLE.length; n += 2) {
+        var res = NODES_TABLE[n].innerText.split(',');
+        //console.log(res[0]);
+        //console.log(res[1]);
+        ctx.drawImage(nodeimg, res[0], res[1]);
     }
 
+    for (var i in TAGS) {
+        ctx.drawImage(tagimg, Math.round(TAGS[i].location), 30);        //draw circle on location
+        //ctx.fillText(TAGS[i].name, Math.round(TAGS[i].location), 30);     //write tag's name over the drawn circle
+    }
+    //var stat = calculation();
     window.requestAnimationFrame(draw);
 }
 
-$(document).ready(function () {
-    setInterval(getLocData, 5000);
-    init();
-});
+function calculation() {
+    //get details of nodes displayed on the page
+    var nodesData = {};
+    //var nodesTable = document.getElementById("nodesdataTable").getElementsByTagName('td');
+    //for (var k in table) {
+    //    console.log(table[k].innerText);
+    //}
+    if (TAGS.length > 0) {
+        for (var i = 0; i < TAGS.length; i++) {
+            var tempMac = TAGS[i].mac;
+            if (tempMac in nodesData == false) {
+                var tempList = [];
+                for (var j = 0; j < TAGS.length; j++) {
+                    if (TAGS[j].mac == tempMac) {
+                        tempList.push([TAGS[j].location, TAGS[j].snode]);
+                    }
+                }
+                if (tempList.length >= 3) {
+                    nodesData[tempMac] = tempList;
+                }
+            }
+        }
+    }
+    else {
+        return false;
+    }
+    console.log(nodesData);
+    return true;
+}
 
 function getLocData() {
     $.ajax({
@@ -56,7 +99,7 @@ function getLocData() {
         data: {},
         success: function (indata) {
             TAGS = indata.tags;
-            NODES = indata.nodes;
+            //NODES = indata.nodes;
             if (TAGS.length > 0) {
                 $("#tagsdata tbody > tr").remove();
                 for (var i = 0; i < TAGS.length; i++) {
@@ -66,6 +109,7 @@ function getLocData() {
                         "<th scope='row'>" + (i + 1) + "</th>" +
                         "<td>" + TAGS[i].name + "</td>" +
                         "<td>" + TAGS[i].location + "</td>" +
+                        "<td>" + TAGS[i].snode + "</td>" +
                         "</tr>"
                     );
                 }
@@ -80,4 +124,5 @@ function getLocData() {
             }
         }
     });
+    var v = calculation();
 }

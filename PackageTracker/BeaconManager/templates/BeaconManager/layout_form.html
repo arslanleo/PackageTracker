@@ -1,0 +1,15 @@
+﻿{% extends "BeaconManager/base_generic.html" %}
+
+{% block content %}
+
+<h2>{{title}}</h2>
+
+<p>Select a Layout Plan for location tracking, and click submit</p>
+
+<form action={% url 'layoutSelec' %} method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}

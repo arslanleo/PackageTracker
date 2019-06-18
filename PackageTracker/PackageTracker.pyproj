@@ -35,8 +35,13 @@
     <Compile Include="BeaconManager\filter.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BeaconManager\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BeaconManager\migrations\0001_initial.py" />
     <Compile Include="BeaconManager\migrations\0002_auto_20190522_2352.py" />
+    <Compile Include="BeaconManager\migrations\0003_layout_node.py" />
+    <Compile Include="BeaconManager\migrations\0004_auto_20190610_2111.py" />
     <Compile Include="BeaconManager\migrations\__init__.py" />
     <Compile Include="BeaconManager\models.py" />
     <Compile Include="BeaconManager\mqtt.py">
@@ -62,6 +67,7 @@
     <Content Include="BeaconManager\static\BeaconManager\scripts\myScript.js" />
     <Content Include="BeaconManager\templates\BeaconManager\about.html" />
     <Content Include="BeaconManager\templates\BeaconManager\base_generic.html" />
+    <Content Include="BeaconManager\templates\BeaconManager\layout_form.html" />
     <Content Include="BeaconManager\templates\BeaconManager\live_location.html" />
     <Content Include="BeaconManager\templates\BeaconManager\tags_data.html" />
     <Content Include="BeaconManager\templates\BeaconManager\index.html" />
@@ -71,7 +77,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BeaconManager\" />
+    <Folder Include="BeaconManager\media\layouts\" />
     <Folder Include="BeaconManager\migrations\" />
+    <Folder Include="BeaconManager\media\" />
     <Folder Include="BeaconManager\static\" />
     <Folder Include="BeaconManager\static\BeaconManager\" />
     <Folder Include="BeaconManager\static\BeaconManager\content\" />

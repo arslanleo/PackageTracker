@@ -6,5 +6,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('tagsData/', views.viewTagsData, name='tagData'),
     path('tagsLoc/', views.viewliveLoc, name='liveLoc'),
+    path('layoutSelector/', views.viewLayoutSelector, name='layoutSelec'),
     path('tagsLocData/', views.getLocData),
 ]
