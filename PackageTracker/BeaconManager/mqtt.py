@@ -48,7 +48,7 @@ def on_message(client, userdata, msg):
     #print(tagsData.items())
 
 for r in my_custom_sql():
-    MQTT_TOPICS.append((r[0],1))
+    MQTT_TOPICS.append((r[0],0))
 
 client = pahomqtt.Client()
 client.on_connect = on_connect
