@@ -5,7 +5,7 @@ from django.shortcuts import render
 from datetime import datetime
 from BeaconManager.mqtt import getTagsInfo
 from BeaconManager.models import Tag, Node, Layout
-from .forms import LayoutForm
+from .forms import LayoutForm, NodeSelectForm
 
 # Create your views here.
 
@@ -25,6 +25,9 @@ def index(request):     #its a function based view
 
 def viewTagsData(request):     #its a function based view
     """View function for homepage of website"""
+    selectedNode = request.session.get('selected_node')
+    node_obj = Node.objects.get(id=selectedNode)
+
     unknownTags = getTagsInfo()
     knownTags = Tag.objects.all()
     statusT = Tag.TAG_STATUS
@@ -32,9 +35,11 @@ def viewTagsData(request):     #its a function based view
     #print(statusD['p'])
     tempKnown = {}
     for t in knownTags:
-        if(t.tagID in unknownTags):
-            tempKnown[t.tagID] = [t.name,t.description,statusD[t.status],unknownTags[t.tagID][1]]
-            unknownTags.pop(t.tagID)
+        lookupID = t.tagID
+        for k in unknownTags:
+            if(k[0]==lookupID and k[1]==node_obj.node_id):
+                tempKnown[lookupID] = [t.name,t.description,statusD[t.status],unknownTags[k][1]]
+                #unknownTags.pop(k)
 
     return render(
         request,
@@ -43,6 +48,7 @@ def viewTagsData(request):     #its a function based view
             'title':"Tag's Data",
             'classID':'2',
             'year':datetime.now().year,
+            'selectedNode':node_obj.node_id,
             'tagsU':unknownTags,
             'tagsK':tempKnown,
             }
@@ -132,6 +138,34 @@ def viewLayoutSelector(request):
         context={
             'title':'Layout Selection',
             'classID':'3',
+            'year':datetime.now().year,
+            'form':form,
+            }
+        )
+
+def viewNodeSelector(request):
+    """View function for Node selector page"""
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = NodeSelectForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            request.session['selected_node'] = request.POST['node_name']
+            # redirect to a new URL:
+            return HttpResponseRedirect('/BeaconManager/tagsData/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = NodeSelectForm()
+
+    return render(
+        request,
+        'node_sel_form.html',
+        context={
+            'title':'Node Selection',
+            'classID':'2',
             'year':datetime.now().year,
             'form':form,
             }

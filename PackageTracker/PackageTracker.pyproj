@@ -69,6 +69,7 @@
     <Content Include="BeaconManager\templates\BeaconManager\base_generic.html" />
     <Content Include="BeaconManager\templates\BeaconManager\layout_form.html" />
     <Content Include="BeaconManager\templates\BeaconManager\live_location.html" />
+    <Content Include="BeaconManager\templates\BeaconManager\node_sel_form.html" />
     <Content Include="BeaconManager\templates\BeaconManager\tags_data.html" />
     <Content Include="BeaconManager\templates\BeaconManager\index.html" />
     <Content Include="db.sqlite3" />
@@ -88,6 +89,7 @@
     <Folder Include="BeaconManager\static\BeaconManager\scripts\" />
     <Folder Include="BeaconManager\templates\" />
     <Folder Include="BeaconManager\templates\BeaconManager\" />
+    <Folder Include="logs\" />
     <Folder Include="PackageTracker\" />
   </ItemGroup>
   <ItemGroup>

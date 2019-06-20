@@ -7,5 +7,6 @@ urlpatterns = [
     path('tagsData/', views.viewTagsData, name='tagData'),
     path('tagsLoc/', views.viewliveLoc, name='liveLoc'),
     path('layoutSelector/', views.viewLayoutSelector, name='layoutSelec'),
+    path('nodeSelector/', views.viewNodeSelector, name='nodeSelec'),
     path('tagsLocData/', views.getLocData),
 ]

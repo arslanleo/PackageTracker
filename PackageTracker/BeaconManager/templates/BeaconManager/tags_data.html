@@ -8,6 +8,7 @@
 
 <h2>{{title}}</h2>
 
+<p>Selected Node's Mac: {{selectedNode}}</p>
 <h3 class="p-3 mb-2 bg-primary text-white">Known Tags</h3>
 <p>Detail of nearby Tags and their details:</p>
 <div class="table-responsive">
@@ -51,12 +52,14 @@
         </thead>
         <tbody>
     {% for key, val in tagsU.items %}
+            {% if key.1 == selectedNode %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
-                <td>{{ key }}</td>
+                <td>{{ key.0 }}</td>
                 <td>{{ val.0 }} dB</td>
                 <td>{{ val.1 }} meter</td>
             </tr>
+            {% endif %}
     {% endfor %}
         </tbody>
     </table>
