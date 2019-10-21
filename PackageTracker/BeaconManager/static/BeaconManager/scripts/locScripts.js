@@ -44,7 +44,7 @@ function draw() {
         var Ty = TAGS_LOCS[eachTag][1];
         if (Tx>0 && Ty>0) {
             ctx.drawImage(tagimg, Tx, Ty);        //draw circle on location
-            //ctx.drawImage(Tname, TAGS_LOCS[eachTag].[0], TAGS_LOCS[eachTag].[1]);    //write tag's name over the drawn circle
+            //ctx.drawImage(Tname, Tx, Ty+5);    //write tag's name over the drawn circle
         }
         
     }
@@ -122,7 +122,7 @@ function getLocData() {
         data: {},
         success: function (indata) {
             TAGS = indata.tags;
-            //NODES = indata.nodes;
+            LOCS = indata.locations;
             if (TAGS.length > 0) {
                 $("#tagsdata tbody > tr").remove();
                 for (var i = 0; i < TAGS.length; i++) {
@@ -137,6 +137,12 @@ function getLocData() {
                     );
                 }
             }
+            if (LOCS.length > 0) {
+                for (var j = 0; j < LOCS.length; j++) {
+                    TAGS_LOCS[LOCS[j].tagMac] = [LOCS[j].locX, LOCS[j].locY];
+                    console.log(LOCS[j].tagMac, LOCS[j].locX, LOCS[j].locY);
+                }
+            }
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert("Error occurred: " + thrownError);
@@ -147,5 +153,5 @@ function getLocData() {
             }
         }
     });
-    var v = calculation();
+    //var v = calculation();
 }

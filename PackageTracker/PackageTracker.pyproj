@@ -32,12 +32,10 @@
   <ItemGroup>
     <Compile Include="BeaconManager\admin.py" />
     <Compile Include="BeaconManager\apps.py" />
-    <Compile Include="BeaconManager\filter.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="BeaconManager\forms.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BeaconManager\kalman.py" />
     <Compile Include="BeaconManager\migrations\0001_initial.py" />
     <Compile Include="BeaconManager\migrations\0002_auto_20190522_2352.py" />
     <Compile Include="BeaconManager\migrations\0003_layout_node.py" />

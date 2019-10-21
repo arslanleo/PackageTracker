@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from datetime import datetime
-from BeaconManager.mqtt import getTagsInfo
+from BeaconManager.mqtt import getTagsInfo, getTagLocation
 from BeaconManager.models import Tag, Node, Layout
 from .forms import LayoutForm, NodeSelectForm
 
@@ -76,8 +76,27 @@ def getLocData(request):
             if(t.tagID == tagMac):
                 tempKnown.append({"name":t.name, "mac":t.tagID, "location":values[1], "snode":nodeMac})
 
+    layout_obj = Layout.objects.get(id=request.session.get('selected_layout'))      #get the layout data for the selected layout in current session
+
+    allNodes = layout_obj.node_set.all()        #get all nodes associated with current layout
+    nodeMacs = []
+    for n in allNodes:      #get the MACs of all nodes in the current layout
+        nodeMacs.append(n.node_id)
+    
+    #calculate scale
+    scaleH = int(layout_obj.length)/640
+    scaleV = int(layout_obj.width)/360
+    if scaleH >= scaleV:
+        scale = scaleH
+    else:
+        scale = scaleV
+
+    #call the fuction in the mqtt file to get the locations of all of the Known TAGs having nodes in the current layout
+    _foundLocs = getTagLocation(nodeMacs,scale)
+
     json_data = {
-        "tags": tempKnown
+        "tags": tempKnown,
+        "locations" : _foundLocs
         }
     return JsonResponse(json_data, safe=False)
 
